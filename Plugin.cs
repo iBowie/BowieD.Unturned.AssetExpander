@@ -15,6 +15,9 @@ namespace BowieD.Unturned.AssetExpander
             CustomData.Clear();
             LoadCustomData();
             EventManager.Start();
+
+            Rocket.Core.Logging.Logger.Log("Plugin created by BowieD");
+            Rocket.Core.Logging.Logger.Log(@"https://github.com/iBowie/BowieD.Unturned.AssetExpander");
         }
         protected override void Unload()
         {
