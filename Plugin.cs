@@ -41,17 +41,19 @@ namespace BowieD.Unturned.AssetExpander
                     if (asset is null)
                         continue;
 
-                    if (CustomData.ContainsKey(asset.GUID))
+                    if (!CustomData.ContainsKey(asset.GUID))
                     {
-                        var dict = CustomData[asset.GUID];
+                        CustomData.Add(asset.GUID, new Dictionary<string, string>());
+                    }
 
-                        foreach (var cf in kv.Value)
-                        {
-                            if (dict.ContainsKey(cf.Key))
-                                dict[cf.Key] = cf.Value;
-                            else
-                                dict.Add(cf.Key, cf.Value);
-                        }
+                    var dict = CustomData[asset.GUID];
+
+                    foreach (var cf in kv.Value)
+                    {
+                        if (dict.ContainsKey(cf.Key))
+                            dict[cf.Key] = cf.Value;
+                        else
+                            dict.Add(cf.Key, cf.Value);
                     }
                 }
             }
