@@ -7,23 +7,36 @@ namespace BowieD.Unturned.AssetExpander
         public static void Start()
         {
             UseableConsumeable.onConsumePerformed += UseableConsumeable_onConsumePerformed;
+            UseableConsumeable.onPerformedAid += UseableConsumeable_onPerformedAid;
+        }
+
+        private static void UseableConsumeable_onPerformedAid(Player instigator, Player target)
+        {
+            var asset = instigator.equipment.asset;
+            if (asset is ItemConsumeableAsset ica)
+                consume(target, ica);
         }
 
         private static void UseableConsumeable_onConsumePerformed(Player instigatingPlayer, ItemConsumeableAsset consumeableAsset)
         {
-            if (Plugin.CustomData.TryGetValue(consumeableAsset.GUID, out var cData))
+            consume(instigatingPlayer, consumeableAsset);
+        }
+
+        private static void consume(Player player, ItemConsumeableAsset asset)
+        {
+            if (Plugin.CustomData.TryGetValue(asset.GUID, out var cData))
             {
                 if (cData.TryGetValue("Thirst", out var thirstRaw) && byte.TryParse(thirstRaw, out byte thirst))
                 {
-                    instigatingPlayer.life.serverModifyWater(-thirst);
+                    player.life.serverModifyWater(-thirst);
                 }
                 if (cData.TryGetValue("Starve", out var starveRaw) && byte.TryParse(starveRaw, out byte starve))
                 {
-                    instigatingPlayer.life.serverModifyFood(-starve);
+                    player.life.serverModifyFood(-starve);
                 }
                 if (cData.TryGetValue("Tire", out var tireRaw) && byte.TryParse(tireRaw, out byte tire))
                 {
-                    instigatingPlayer.life.serverModifyStamina(-tire);
+                    player.life.serverModifyStamina(-tire);
                 }
             }
         }
@@ -31,6 +44,7 @@ namespace BowieD.Unturned.AssetExpander
         public static void Stop()
         {
             UseableConsumeable.onConsumePerformed -= UseableConsumeable_onConsumePerformed;
+            UseableConsumeable.onPerformedAid -= UseableConsumeable_onPerformedAid;
         }
     }
 }
