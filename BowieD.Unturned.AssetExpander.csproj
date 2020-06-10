@@ -78,8 +78,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomFields\Items\StarveCustomField.cs" />
+    <Compile Include="CustomFields\Items\ThirstCustomField.cs" />
+    <Compile Include="CustomFields\Items\TireCustomField.cs" />
     <Compile Include="ESearchMode.cs" />
-    <Compile Include="EventManager.cs" />
+    <Compile Include="Models\CustomField.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="PluginConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
