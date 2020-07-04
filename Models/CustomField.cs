@@ -20,5 +20,9 @@ namespace BowieD.Unturned.AssetExpander.Models
         /// Used to dispose of any custom fields
         /// </summary>
         void Stop();
+        /// <summary>
+        /// Used to determine if everything is fine and initialization is possible
+        /// </summary>
+        bool ShouldInit { get; }
     }
 }

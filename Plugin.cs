@@ -58,8 +58,11 @@ namespace BowieD.Unturned.AssetExpander
 
         private void RegisterCustomField(ICustomField instance)
         {
-            Fields.Add(instance);
-            instance.Init();
+            if (instance.ShouldInit)
+            {
+                Fields.Add(instance);
+                instance.Init();
+            }
         }
         private void LoadCustomData()
         {

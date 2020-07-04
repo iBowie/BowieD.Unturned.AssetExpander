@@ -41,5 +41,7 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
             UseableConsumeable.onConsumePerformed -= UseableConsumeable_onConsumePerformed;
             UseableConsumeable.onPerformedAid -= UseableConsumeable_onPerformedAid;
         }
+
+        public bool ShouldInit => true;
     }
 }
