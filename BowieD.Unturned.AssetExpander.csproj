@@ -85,6 +85,7 @@
     <Compile Include="CustomFields\Items\StarveCustomField.cs" />
     <Compile Include="CustomFields\Items\ThirstCustomField.cs" />
     <Compile Include="CustomFields\Items\TireCustomField.cs" />
+    <Compile Include="CustomFields\Vehicles\HookRadiusCustomField.cs" />
     <Compile Include="ESearchMode.cs" />
     <Compile Include="Models\ICustomField.cs" />
     <Compile Include="Models\IDependentField.cs" />
