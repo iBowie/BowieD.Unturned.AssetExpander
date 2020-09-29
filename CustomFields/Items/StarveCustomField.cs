@@ -6,6 +6,7 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
     public class StarveCustomField : ICustomField
     {
         public string Name => "Starve";
+        public string[] AdditionalFields => new string[0];
         public EAssetType Type => EAssetType.ITEM;
         public void Init()
         {

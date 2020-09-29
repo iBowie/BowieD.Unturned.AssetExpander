@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomFields\Items\LifeStealCustomField.cs" />
     <Compile Include="CustomFields\Items\StarveCustomField.cs" />
     <Compile Include="CustomFields\Items\ThirstCustomField.cs" />
     <Compile Include="CustomFields\Items\TireCustomField.cs" />

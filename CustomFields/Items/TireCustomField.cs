@@ -6,6 +6,7 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
     public class TireCustomField : ICustomField
     {
         public string Name => "Tire";
+        public string[] AdditionalFields => new string[0];
         public EAssetType Type => EAssetType.ITEM;
         public void Init()
         {

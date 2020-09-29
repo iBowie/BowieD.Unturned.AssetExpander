@@ -89,7 +89,7 @@ namespace BowieD.Unturned.AssetExpander
                                 string name = split[0];
                                 string value = string.Join(" ", split.Skip(1));
                                 
-                                if (fields.Any(d => d.Name == name))
+                                if (fields.Any(d => d.Name == name || d.AdditionalFields.Contains(name)))
                                 {
                                     addOrOverrideCustomData(asset.GUID, name, value);
                                 }

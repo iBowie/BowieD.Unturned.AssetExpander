@@ -9,6 +9,10 @@ namespace BowieD.Unturned.AssetExpander.Models
         /// </summary>
         string Name { get; }
         /// <summary>
+        /// Additional fields to parse
+        /// </summary>
+        string[] AdditionalFields { get; }
+        /// <summary>
         /// Asset Type
         /// </summary>
         EAssetType Type { get; }
