@@ -60,6 +60,18 @@ namespace BowieD.Unturned.AssetExpander
         {
             if (instance.ShouldInit)
             {
+                if (instance is IDependentField df)
+                {
+                    foreach (var d in df.Dependencies)
+                    {
+                        if (IsDependencyLoaded(d))
+                            continue;
+
+                        Rocket.Core.Logging.Logger.LogWarning($"Field {instance.Name} requires {d} to work.");
+                        return;
+                    }
+                }
+
                 Fields.Add(instance);
                 instance.Init();
             }
