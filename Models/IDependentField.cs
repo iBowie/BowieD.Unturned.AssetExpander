@@ -5,6 +5,6 @@
         /// <summary>
         /// Used to determine if this field can be initialized
         /// </summary>
-        string[] Dependencies { get; set; }
+        string[] Dependencies { get; }
     }
 }
