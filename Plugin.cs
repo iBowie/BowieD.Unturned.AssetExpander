@@ -35,7 +35,7 @@ namespace BowieD.Unturned.AssetExpander
         }
         public void RegisterCustomField<T>(T instance) where T : class, ICustomField
         {
-            RegisterCustomField(instance);
+            RegisterCustomField((ICustomField)instance);
         }
         public void RegisterCustomFields(Assembly assembly)
         {
