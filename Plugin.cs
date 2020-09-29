@@ -68,7 +68,6 @@ namespace BowieD.Unturned.AssetExpander
                             continue;
 
                         Rocket.Core.Logging.Logger.LogWarning($"Field {instance.Name} requires {d} to work.");
-                        return;
                     }
                 }
 
