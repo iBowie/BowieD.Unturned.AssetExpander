@@ -5,7 +5,7 @@ This plugin includes default asset expansions to add some missing methods/fields
 ### Custom Fields
 
 Asset Type | Field Name | Field Type | Description | Requirement
---- | --- | :-: | ---
+--- | --- | :-: | --- | ---
 Item | Thirst | byte | Decreases players water value | None
 Item | Starve | byte | Decreases players satiety | None
 Item | Tire | byte | Decreases players stamina | None
