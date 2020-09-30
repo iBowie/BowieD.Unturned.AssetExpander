@@ -4,16 +4,16 @@ This plugin includes default asset expansions to add some missing methods/fields
 
 ### Custom Fields
 
-Asset Type | Field Name | Field Type | Description | Requirement
---- | --- | :-: | --- | ---
-Item | Thirst | byte | Decreases players water value | None
-Item | Starve | byte | Decreases players satiety | None
-Item | Tire | byte | Decreases players stamina | None
-Item | Lifesteal | float | Heals the player by specified amount when they attack players, zombies or animals. | None
-Item | Lifesteal_Min | float | Specifies minimum for lifesteal (e.g. if lifesteal must heal 1 hp, but you've set this field to 2, it will heal 2 hp) | None
-Item | Lifesteal_Max | float | Specifies maximum for lifesteal (e.g. if lifesteal must heal 150 hp, but you've set this field to 50, it will heal 50 hp) | None
-Item | Proof_Acid | tag | Works only for shirt and pants. If both shirt and pants have this tag player will be immune to acid | None
-Vehicle | Hook_Radius | float | Specifies distance that is used to determine which vehicles to hook. | 0Harmony
+Asset Type | Field Name | Field Type | Description | Requirement | Source
+--- | --- | :-: | --- | --- | ---
+Item | Thirst | byte | Decreases players water value | None | [Issue 1522 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1522)
+Item | Starve | byte | Decreases players satiety | None | [Issue 1522 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1522)
+Item | Tire | byte | Decreases players stamina | None | [Issue 1522 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1522)
+Item | Lifesteal | float | Heals the player by specified amount when they attack players, zombies or animals. | None | [Issue 1969 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1969)
+Item | Lifesteal_Min | float | Specifies minimum for lifesteal (e.g. if lifesteal must heal 1 hp, but you've set this field to 2, it will heal 2 hp) | None | [Issue 1969 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1969)
+Item | Lifesteal_Max | float | Specifies maximum for lifesteal (e.g. if lifesteal must heal 150 hp, but you've set this field to 50, it will heal 50 hp) | None | [Issue 1969 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1969)
+Item | Proof_Acid | tag | Works only for shirt and pants. If both shirt and pants have this tag player will be immune to acid | None | [Issue 1846 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1846)
+Vehicle | Hook_Radius | float | Specifies distance that is used to determine which vehicles to hook. | 0Harmony | [Issue 1990 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1990)
 
 ### Type Cheatsheet (for those who doesn't code)
 
