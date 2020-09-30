@@ -1,10 +1,12 @@
 ﻿using BowieD.Unturned.AssetExpander.Models;
+using Newtonsoft.Json.Linq;
 using Rocket.Core.Plugins;
 using SDG.Unturned;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 
 namespace BowieD.Unturned.AssetExpander
@@ -23,6 +25,25 @@ namespace BowieD.Unturned.AssetExpander
 
             Rocket.Core.Logging.Logger.Log("Plugin created by BowieD");
             Rocket.Core.Logging.Logger.Log(@"https://github.com/iBowie/BowieD.Unturned.AssetExpander");
+
+            switch (checkForUpdates())
+            {
+                case true:
+                    {
+                        Rocket.Core.Logging.Logger.LogWarning("Update available. Head to GitHub page to download it.");
+                    }
+                    break;
+                case false:
+                    {
+
+                    }
+                    break;
+                default:
+                    {
+                        Rocket.Core.Logging.Logger.LogWarning("Could not get new version.");
+                    }
+                    break;
+            }
         }
         protected override void Unload()
         {
@@ -139,6 +160,41 @@ namespace BowieD.Unturned.AssetExpander
                 dict[name] = value;
             else
                 dict.Add(name, value);
+        }
+
+        bool? checkForUpdates()
+        {
+            try
+            {
+                var v = Assembly.GetName().Version;
+
+                using (WebClient wc = new WebClient())
+                {
+                    wc.Headers.Add(HttpRequestHeader.UserAgent, "Unturned");
+
+                    var url = $"https://api.github.com/repos/iBowie/BowieD.Unturned.AssetExpander/releases/latest";
+
+                    string data = wc.DownloadString(url);
+
+                    JObject jobj = JObject.Parse(data);
+
+                    if (jobj.TryGetValue("tag_name", out var tag_nameToken))
+                    {
+                        var nv = Version.Parse(tag_nameToken.Value<string>());
+
+                        return nv > v ? true : false;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Rocket.Core.Logging.Logger.LogException(ex, "Could not check for new updates");
+                return null;
+            }
         }
     }
 }
