@@ -14,7 +14,7 @@ namespace BowieD.Unturned.AssetExpander
     public sealed class Plugin : RocketPlugin<PluginConfiguration>
     {
         internal static Plugin Instance { get; private set; }
-        internal static Dictionary<Guid, Dictionary<string, string>> CustomData { get; } = new Dictionary<Guid, Dictionary<string, string>>();
+        private static Dictionary<Guid, Dictionary<string, string>> CustomData { get; } = new Dictionary<Guid, Dictionary<string, string>>();
         internal static HashSet<ICustomField> Fields { get; } = new HashSet<ICustomField>();
 
         protected override void Load()
@@ -195,6 +195,47 @@ namespace BowieD.Unturned.AssetExpander
                 Rocket.Core.Logging.Logger.LogException(ex, "Could not check for new updates");
                 return null;
             }
+        }
+
+        public static bool TryGetCustomDataFor(Guid guid, string key, out string value)
+        {
+            return TryGetCustomDataFor(guid, key, out _, out value);
+        }
+        public static bool TryGetCustomDataFor(Guid guid, string key, out Dictionary<string, string> dict, out string value)
+        {
+            if (CustomData.TryGetValue(guid, out dict))
+            {
+                if (dict.TryGetValue(key, out value))
+                {
+                    return true;
+                }
+            }
+
+            value = default;
+            return false;
+        }
+        public static bool TryGetCustomDataFor<T>(Guid guid, string key, out Dictionary<string, string> dict, out T value)
+        {
+            if (typeof(IConvertible).IsAssignableFrom(typeof(T)))
+            {
+                if (TryGetCustomDataFor(guid, key, out dict, out var raw))
+                {
+                    value = (T)Convert.ChangeType(raw, typeof(T));
+                    return true;
+                }
+            }
+            else
+            {
+                Rocket.Core.Logging.Logger.LogError("Somehow i messed up that part");
+            }
+
+            dict = default;
+            value = default;
+            return false;
+        }
+        public static bool TryGetCustomDataFor<T>(Guid guid, string key, out T value)
+        {
+            return TryGetCustomDataFor<T>(guid, key, out _, out value);
         }
     }
 }
