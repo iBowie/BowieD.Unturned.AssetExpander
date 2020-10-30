@@ -4,6 +4,7 @@ using Rocket.Core.Plugins;
 using SDG.Unturned;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -220,7 +221,7 @@ namespace BowieD.Unturned.AssetExpander
             {
                 if (TryGetCustomDataFor(guid, key, out dict, out var raw))
                 {
-                    value = (T)Convert.ChangeType(raw, typeof(T));
+                    value = (T)Convert.ChangeType(raw, typeof(T), CultureInfo.InvariantCulture);
                     return true;
                 }
             }
