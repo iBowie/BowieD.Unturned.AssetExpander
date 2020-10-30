@@ -28,12 +28,9 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
 
         private void consume(Player player, ItemConsumeableAsset asset)
         {
-            if (Plugin.CustomData.TryGetValue(asset.GUID, out var cData))
+            if (Plugin.TryGetCustomDataFor<byte>(asset.GUID, Name, out byte parsed))
             {
-                if (cData.TryGetValue(Name, out var raw) && byte.TryParse(raw, out byte parsed))
-                {
-                    player.life.serverModifyWater(-parsed);
-                }
+                player.life.serverModifyWater(-parsed);
             }
         }
 

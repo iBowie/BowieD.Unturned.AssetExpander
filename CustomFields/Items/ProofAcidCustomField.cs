@@ -42,12 +42,9 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
 
                                 if (top != null && pants != null)
                                 {
-                                    if (Plugin.CustomData.TryGetValue(top.GUID, out var cDataTop) && Plugin.CustomData.TryGetValue(pants.GUID, out var cDataPants))
+                                    if (Plugin.HasCustomData(top.GUID, Name) && Plugin.HasCustomData(pants.GUID, Name))
                                     {
-                                        if (cDataTop.ContainsKey(Name) && cDataPants.ContainsKey(Name))
-                                        {
-                                            parameters.times *= 0f;
-                                        }
+                                        parameters.times *= 0f;
                                     }
                                 }
                             }

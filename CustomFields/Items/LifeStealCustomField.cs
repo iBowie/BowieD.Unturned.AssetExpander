@@ -70,33 +70,30 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
 
             if (asset is ItemMeleeAsset || asset is ItemGunAsset)
             {
-                if (Plugin.CustomData.TryGetValue(asset.GUID, out var cData))
+                if (Plugin.TryGetCustomDataFor<float>(asset.GUID, Name, out var parsed))
                 {
-                    if (cData.TryGetValue(Name, out var raw) && float.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out float parsed))
+                    float ret = (damage * times) * parsed;
+
+                    #region clamp
+                    float min;
+                    float max;
+
+                    if (!Plugin.TryGetCustomDataFor<float>(asset.GUID, Field_Lifesteal_Min, out min))
                     {
-                        float ret = (damage * times) * parsed;
-
-                        #region clamp
-                        float min = 0f;
-                        float max = 100f;
-
-                        if (cData.TryGetValue(Field_Lifesteal_Min, out var rawMin) && float.TryParse(rawMin, NumberStyles.Float, CultureInfo.InvariantCulture, out float minParsed))
-                        {
-                            min = minParsed;
-                        }
-                        if (cData.TryGetValue(Field_Lifesteal_Max, out var rawMax) && float.TryParse(rawMax, NumberStyles.Float, CultureInfo.InvariantCulture, out float maxParsed))
-                        {
-                            max = maxParsed;
-                        }
-
-                        if (ret > max)
-                            ret = max;
-                        else if (ret < min)
-                            ret = min;
-                        #endregion
-
-                        player.life.serverModifyHealth(ret);
+                        min = 0f;
                     }
+                    if (!Plugin.TryGetCustomDataFor<float>(asset.GUID, Field_Lifesteal_Max, out max))
+                    {
+                        max = 100f;
+                    }
+
+                    if (ret > max)
+                        ret = max;
+                    else if (ret < min)
+                        ret = min;
+                    #endregion
+
+                    player.life.serverModifyHealth(ret);
                 }
             }
         }

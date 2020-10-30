@@ -83,14 +83,11 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Vehicles
                 return false;
             }
 
-            float radius = 3f;
+            float radius;
 
-            if (Plugin.CustomData.TryGetValue(__instance.asset.GUID, out var cData))
+            if (!Plugin.TryGetCustomDataFor<float>(__instance.asset.GUID, FieldName, out radius))
             {
-                if (cData.TryGetValue(FieldName, out var raw) && float.TryParse(raw, out float parsed) && parsed > 0f)
-                {
-                    radius = parsed;
-                }
+                radius = 3f;
             }
 
             var hook = get_priv_hook(__instance);
