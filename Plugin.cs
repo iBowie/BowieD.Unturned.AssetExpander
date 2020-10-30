@@ -230,8 +230,16 @@ namespace BowieD.Unturned.AssetExpander
             {
                 if (TryGetCustomDataFor(guid, key, out dict, out var raw))
                 {
-                    value = (T)Convert.ChangeType(raw, typeof(T), CultureInfo.InvariantCulture);
-                    return true;
+                    try
+                    {
+                        value = (T)Convert.ChangeType(raw, typeof(T), CultureInfo.InvariantCulture);
+                        return true;
+                    }
+                    catch
+                    {
+                        value = default;
+                        return false;
+                    }
                 }
             }
             else
