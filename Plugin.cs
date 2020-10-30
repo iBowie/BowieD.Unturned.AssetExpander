@@ -198,6 +198,15 @@ namespace BowieD.Unturned.AssetExpander
             }
         }
 
+        public static bool HasCustomData(Guid guid, string key)
+        {
+            if (CustomData.TryGetValue(guid, out var dict))
+            {
+                return dict.ContainsKey(key);
+            }
+
+            return false;
+        }
         public static bool TryGetCustomDataFor(Guid guid, string key, out string value)
         {
             return TryGetCustomDataFor(guid, key, out _, out value);
