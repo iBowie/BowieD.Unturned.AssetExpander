@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomFields\Items\LifeStealCustomField.cs" />
+    <Compile Include="CustomFields\Items\PlayerSpeedModifierCustomField.cs" />
     <Compile Include="CustomFields\Items\ProofAcidCustomField.cs" />
     <Compile Include="CustomFields\Items\StarveCustomField.cs" />
     <Compile Include="CustomFields\Items\ThirstCustomField.cs" />
