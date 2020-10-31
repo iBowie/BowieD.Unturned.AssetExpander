@@ -48,6 +48,10 @@ namespace BowieD.Unturned.AssetExpander
         }
         protected override void Unload()
         {
+            foreach (var f in Fields)
+                f.Stop();
+
+            Fields.Clear();
             CustomData.Clear();
         }
 
