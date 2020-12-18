@@ -17,6 +17,7 @@ Item | Lifesteal_Max | float | Specifies maximum for lifesteal (e.g. if lifestea
 Item | Proof_Acid | tag | Works only for shirt and pants. If both shirt and pants have this tag player will be immune to acid | None | [Issue 1846 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1846)
 Item | Player_Speed | float | Modifies player speed multiplier when item is held. Value is between '0.01' and max float value | None | [DerpyHoowes](https://github.com/DerpyHoowes)
 Vehicle | Hook_Radius | float | Specifies distance that is used to determine which vehicles to hook. | 0Harmony | [Issue 1990 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1990)
+Vehicle | Battery_ID | ushort | Specifies battery ID that should be used to replace | 0Harmony | [Issue 2239 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/2239)
 
 ### Type Cheatsheet (for those who doesn't code)
 
