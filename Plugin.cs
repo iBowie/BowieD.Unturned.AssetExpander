@@ -77,7 +77,10 @@ namespace BowieD.Unturned.AssetExpander
 
                         RegisterCustomField(instance);
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        Rocket.Core.Logging.Logger.LogException(ex, $"Coult not register custom field '{t.FullName}'");
+                    }
                 }
             }
         }
