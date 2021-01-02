@@ -1,5 +1,6 @@
 ﻿using BowieD.Unturned.AssetExpander.Models;
 using Newtonsoft.Json.Linq;
+using Rocket.API.Collections;
 using Rocket.Core.Plugins;
 using SDG.Unturned;
 using System;
@@ -20,6 +21,8 @@ namespace BowieD.Unturned.AssetExpander
 
         protected override void Load()
         {
+            Instance = this;
+
             CustomData.Clear();
             RegisterCustomFields(Assembly);
             LoadCustomData();
@@ -53,6 +56,8 @@ namespace BowieD.Unturned.AssetExpander
 
             Fields.Clear();
             CustomData.Clear();
+
+            Instance = null;
         }
 
         public void RegisterCustomField<T>() where T : class, ICustomField, new()
@@ -262,5 +267,27 @@ namespace BowieD.Unturned.AssetExpander
         {
             return TryGetCustomDataFor<T>(guid, key, out _, out value);
         }
+
+        void FixedUpdate()
+        {
+            if (Instance == null || !Level.isLoaded)
+                return;
+
+            foreach (var cf in Fields)
+            {
+                if (cf is IFixedUpdateable fixedUpdateable)
+                {
+                    fixedUpdateable.FixedUpdate();
+                }
+            }
+        }
+
+        public override TranslationList DefaultTranslations => new TranslationList()
+        {
+            {
+                "DisableBackpackCustomField_takeOffBackpack",
+                "You cannot wear backpack right now."
+            }
+        };
     }
 }

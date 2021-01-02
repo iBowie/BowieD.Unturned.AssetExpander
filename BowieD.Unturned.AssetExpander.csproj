@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomFields\Items\DisableBackpackCustomField.cs" />
     <Compile Include="CustomFields\Items\LifeStealCustomField.cs" />
     <Compile Include="CustomFields\Items\PlayerSpeedModifierCustomField.cs" />
     <Compile Include="CustomFields\Items\ProofAcidCustomField.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="ESearchMode.cs" />
     <Compile Include="Models\ICustomField.cs" />
     <Compile Include="Models\IDependentField.cs" />
+    <Compile Include="Models\IFixedUpdateable.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="PluginConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
