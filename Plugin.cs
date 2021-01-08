@@ -94,19 +94,28 @@ namespace BowieD.Unturned.AssetExpander
         {
             if (instance.ShouldInit)
             {
-                if (instance is IDependentField df)
+                string name = instance.Name;
+
+                if (Configuration.Instance.DisabledCustomFields != null && Configuration.Instance.DisabledCustomFields.Contains(name))
                 {
-                    foreach (var d in df.Dependencies)
-                    {
-                        if (IsDependencyLoaded(d))
-                            continue;
-
-                        Rocket.Core.Logging.Logger.LogWarning($"Field {instance.Name} requires {d} to work.");
-                    }
+                    Rocket.Core.Logging.Logger.Log($"Field '{Name}' is disabled in the configuration.");
                 }
+                else
+                {
+                    if (instance is IDependentField df)
+                    {
+                        foreach (var d in df.Dependencies)
+                        {
+                            if (IsDependencyLoaded(d))
+                                continue;
 
-                Fields.Add(instance);
-                instance.Init();
+                            Rocket.Core.Logging.Logger.LogWarning($"Field {instance.Name} requires {d} to work.");
+                        }
+                    }
+
+                    Fields.Add(instance);
+                    instance.Init();
+                }
             }
         }
         private void LoadCustomData()

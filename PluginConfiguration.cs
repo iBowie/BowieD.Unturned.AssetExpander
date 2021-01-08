@@ -7,6 +7,7 @@ namespace BowieD.Unturned.AssetExpander
     {
         public ESearchMode SearchMode { get; set; }
         public SerializableDictionary<string, SerializableDictionary<string, string>> CustomFields { get; set; }
+        public string[] DisabledCustomFields { get; set; }
 
         public void LoadDefaults()
         {
@@ -23,6 +24,11 @@ namespace BowieD.Unturned.AssetExpander
                         }
                     }
                 }
+            };
+            DisabledCustomFields = new string[2]
+            {
+                "Battery_ID",
+                "Hook_Radius"
             };
         }
     }
