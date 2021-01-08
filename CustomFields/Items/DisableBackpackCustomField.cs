@@ -36,7 +36,7 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
 
                     var clothing = sp.player.clothing;
 
-                    bool bypass(ItemBackpackAsset asset)
+                    bool bypass(ItemClothingAsset asset)
                     {
                         if (asset == null)
                             return false;
@@ -67,27 +67,27 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
                         break;
                     }
 
-                    if (clothing.hat > 0 && doAsset(clothing.hatAsset))
+                    if (clothing.hat > 0 && !bypass(clothing.hatAsset) && doAsset(clothing.hatAsset))
                     {
                         break;
                     }
-                    if (clothing.mask > 0 && doAsset(clothing.maskAsset))
+                    if (clothing.mask > 0 && !bypass(clothing.maskAsset) && doAsset(clothing.maskAsset))
                     {
                         break;
                     }
-                    if (clothing.glasses > 0 && doAsset(clothing.glassesAsset))
+                    if (clothing.glasses > 0 && !bypass(clothing.glassesAsset) && doAsset(clothing.glassesAsset))
                     {
                         break;
                     }
-                    if (clothing.vest > 0 && doAsset(clothing.vestAsset))
+                    if (clothing.vest > 0 && !bypass(clothing.vestAsset) && doAsset(clothing.vestAsset))
                     {
                         break;
                     }
-                    if (clothing.shirt > 0 && doAsset(clothing.shirtAsset))
+                    if (clothing.shirt > 0 && !bypass(clothing.shirtAsset) && doAsset(clothing.shirtAsset))
                     {
                         break;
                     }
-                    if (clothing.pants > 0 && doAsset(clothing.pantsAsset))
+                    if (clothing.pants > 0 && !bypass(clothing.pantsAsset) && doAsset(clothing.pantsAsset))
                     {
                         break;
                     }

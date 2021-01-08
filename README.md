@@ -16,6 +16,7 @@ Item | Lifesteal_Min | float | Specifies minimum for lifesteal (e.g. if lifestea
 Item | Lifesteal_Max | float | Specifies maximum for lifesteal (e.g. if lifesteal must heal 150 hp, but you've set this field to 50, it will heal 50 hp) | None | [Issue 1969 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1969)
 Item | Proof_Acid | tag | Works only for shirt and pants. If both shirt and pants have this tag player will be immune to acid | None | [Issue 1846 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1846)
 Item | Disable_Backpack | tag | Works for every piece of clothing except for backpack for obvious reasons. | None | [Dumfoozler](https://github.com/Dumfoozler)
+Item | Disable_Backpack_Bypass | tag | Applied to every piece of clothing. Bypasses 'Disable_Backpack' | None | [Dumfoozler](https://github.com/Dumfoozler)
 Item | Player_Speed | float | Modifies player speed multiplier when item is held. Value is between '0.01' and max float value | None | [DerpyHoowes](https://github.com/DerpyHoowes)
 Vehicle | Hook_Radius | float | Specifies distance that is used to determine which vehicles to hook. | 0Harmony | [Issue 1990 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/1990)
 Vehicle | Battery_ID | ushort | Specifies battery ID that should be used to replace | 0Harmony | [Issue 2239 in Unturned 3.x Community](https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/2239)
