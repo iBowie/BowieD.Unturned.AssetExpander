@@ -98,7 +98,7 @@ namespace BowieD.Unturned.AssetExpander
 
                 if (Configuration.Instance.DisabledCustomFields != null && Configuration.Instance.DisabledCustomFields.Contains(name))
                 {
-                    Rocket.Core.Logging.Logger.Log($"Field '{Name}' is disabled in the configuration.");
+                    Rocket.Core.Logging.Logger.Log($"Field '{name}' is disabled in the configuration.");
                 }
                 else
                 {
