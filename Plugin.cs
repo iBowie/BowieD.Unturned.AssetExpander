@@ -140,13 +140,32 @@ namespace BowieD.Unturned.AssetExpander
                             {
                                 string line = sr.ReadLine();
                                 string[] split = line.Split(' ');
-                                string name = split[0];
-                                string value = string.Join(" ", split.Skip(1));
-                                
-                                if (fields.Any(d => d.Name == name || d.AdditionalFields.Contains(name)))
+
+                                switch (split.Length)
                                 {
-                                    addOrOverrideCustomData(asset.GUID, name, value);
+                                    case 1:
+                                        {
+                                            string name = split[0];
+                                            
+                                            if (fields.Any(d => d.Name == name || d.AdditionalFields.Contains(name)))
+                                            {
+                                                addOrOverrideCustomData(asset.GUID, name, string.Empty);
+                                            }
+                                        }
+                                        break;
+                                    case 2:
+                                        {
+                                            string name = split[0];
+                                            string value = string.Join(" ", split.Skip(1));
+
+                                            if (fields.Any(d => d.Name == name || d.AdditionalFields.Contains(name)))
+                                            {
+                                                addOrOverrideCustomData(asset.GUID, name, value);
+                                            }
+                                        }
+                                        break;
                                 }
+
                             }
                         }
                     }
