@@ -8,7 +8,10 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
     public sealed class DisableBackpackCustomField : ICustomField, IFixedUpdateable
     {
         public string Name => "Disable_Backpack";
-        public string[] AdditionalFields => new string[0];
+
+        private const string bypassField = "Disable_Backpack_Bypass";
+
+        public string[] AdditionalFields => new string[1] { bypassField };
         public EAssetType Type => EAssetType.ITEM;
         public bool ShouldInit => true;
         public void Init()
@@ -33,6 +36,18 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
 
                     var clothing = sp.player.clothing;
 
+                    bool bypass(ItemBackpackAsset asset)
+                    {
+                        if (asset == null)
+                            return false;
+
+                        if (Plugin.HasCustomData(asset.GUID, bypassField))
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+
                     bool doAsset(ItemClothingAsset asset)
                     {
                         if (asset == null)
@@ -45,6 +60,11 @@ namespace BowieD.Unturned.AssetExpander.CustomFields.Items
                         }
 
                         return false;
+                    }
+
+                    if (clothing.backpack > 0 && bypass(clothing.backpackAsset))
+                    {
+                        break;
                     }
 
                     if (clothing.hat > 0 && doAsset(clothing.hatAsset))
